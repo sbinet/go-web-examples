@@ -107,6 +107,12 @@ const page = `
 					vAxis: {
 						title: "Sine",
 					},
+					legend: {
+						position: "none",
+					},
+					chart: {
+						title: "Sine",
+					},
 				});
 			};
 
@@ -116,6 +122,12 @@ const page = `
 						title: "Time",
 					},
 					vAxis: {
+						title: "Cosine",
+					},
+					legend: {
+						position: "none",
+					},
+					chart: {
 						title: "Cosine",
 					},
 				});
