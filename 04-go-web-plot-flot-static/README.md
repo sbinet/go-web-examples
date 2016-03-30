@@ -7,6 +7,6 @@ Data is read from a `WebSocket` and pushed to the plot.
 Run like so:
 
 ```sh
-$> 02-go-web-plot-flot-static &
+$> cd 04-go-web-plot-flot-static; go run ./main.go
 $> open http://localhost:5555
 ```
