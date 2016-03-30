@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-//go:generate /bin/sh -c "cd ./root-fs && gopherjs build -v -o app.js"
+//go:generate /bin/sh -c "cd ./root-fs && gopherjs build --minify -v -o app.js"
 
 var (
 	addrFlag = flag.String("addr", ":5555", "server address:port")
