@@ -21,10 +21,10 @@ import (
 
 var (
 	addrFlag = flag.String("addr", ":5555", "server address:port")
-	datac    = make(chan Data)
+	datac    = make(chan plots)
 )
 
-type Data struct {
+type plots struct {
 	Sin string `json:"sin"`
 	Cos string `json:"cos"`
 }
@@ -44,7 +44,7 @@ func main() {
 	}
 }
 
-func generate(datac chan Data, done chan bool) {
+func generate(datac chan plots, done chan bool) {
 	ticker := time.NewTicker(10 * time.Millisecond)
 	defer ticker.Stop()
 
@@ -61,7 +61,7 @@ func generate(datac chan Data, done chan bool) {
 			sinSVG := plotSin(table[0])
 			cosSVG := plotCos(table[1])
 
-			datac <- Data{sinSVG, cosSVG}
+			datac <- plots{sinSVG, cosSVG}
 		case <-done:
 			return
 		}
@@ -87,7 +87,7 @@ func plotSin(data plotter.XYs) string {
 	sin.Add(line)
 	sin.Add(plotter.NewGrid())
 
-	return plotSVG(sin)
+	return renderSVG(sin)
 }
 
 func plotCos(data plotter.XYs) string {
@@ -108,10 +108,10 @@ func plotCos(data plotter.XYs) string {
 	cos.Add(line)
 	cos.Add(plotter.NewGrid())
 
-	return plotSVG(cos)
+	return renderSVG(cos)
 }
 
-func plotSVG(p *plot.Plot) string {
+func renderSVG(p *plot.Plot) string {
 	size := 10 * vg.Centimeter
 	canvas := vgsvg.New(size, size/vg.Length(math.Phi))
 	p.Draw(draw.New(canvas))
@@ -159,7 +159,7 @@ const page = `
 
 			sock.onmessage = function(event) {
 				var data = JSON.parse(event.data);
-				console.log("data: "+JSON.stringify(data));
+				//console.log("data: "+JSON.stringify(data));
 				sinplot = data.sin;
 				cosplot = data.cos;
 				update();
