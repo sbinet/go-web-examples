@@ -11,3 +11,4 @@ $> 06-go-web-gopherjs &
 $> open http://localhost:5555
 ```
 
+Link to other interesting `GopherJS` based examples and tutorials: [https://siongui.github.io/tag/gopherjs.html](https://siongui.github.io/tag/gopherjs.html)
