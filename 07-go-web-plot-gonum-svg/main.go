@@ -155,7 +155,7 @@ const page = `
 		};
 
 		window.onload = function() {
-			sock = new WebSocket("ws://localhost:5555/data");
+			sock = new WebSocket("ws://"+location.host+"/data");
 
 			sock.onmessage = function(event) {
 				var data = JSON.parse(event.data);
