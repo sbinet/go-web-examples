@@ -12,8 +12,15 @@ Another source of inspiration: https://github.com/golang/net/tree/master/http2/h
 **NOTE** that the server's private and public key files were generated like so:
 
 ```
-## generate private key
+## generate CA
+$> openssl genrsa -out rootCA.key 2048
+$> openssl req -x509 -new -nodes -key rootCA.key -days 1024 -out rootCA.pem
+
+## generate server private key
 $> openssl genrsa -out server.key 2048
+
 ## generate self-signed public key, based on the private key
-$> openssl req -new -x509 -sha256 -key server.key -out server.pem -days 3650
+$> openssl req -new -key server.key -out server.csr
+$> echo subjectAltName = IP:127.0.0.1 > extfile.cnf
+$> openssl x509 -req -in server.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out server.crt -days 3650 -extfile extfile.cnf
 ```
