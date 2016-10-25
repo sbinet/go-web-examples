@@ -3,8 +3,15 @@
 Simple HTTPS/TLS example copied from https://gist.github.com/denji/12b3a568f092ab951456.
 
 ```
-$> go run ./main.go
+$> go run ./server.go
 $> open https://localhost:5555
+```
+
+and, in another terminal:
+
+```
+$> go run ./client.go
+hello world from HTTP/2.0
 ```
 
 Another source of inspiration: https://github.com/golang/net/tree/master/http2/h2demo
