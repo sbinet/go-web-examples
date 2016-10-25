@@ -9,11 +9,20 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"golang.org/x/net/http2"
 )
 
 func main() {
+	url := "127.0.0.1:5555"
+	if len(os.Args) > 1 {
+		url = os.Args[1]
+	}
+	if !strings.HasPrefix(url, "http") {
+		url = "https://" + url
+	}
+
 	roots := x509.NewCertPool()
 	if !roots.AppendCertsFromPEM(rootCA) {
 		log.Fatal("invalid cert")
@@ -30,7 +39,7 @@ func main() {
 		Transport: tr,
 	}
 
-	resp, err := client.Get("https://127.0.0.1:5555")
+	resp, err := client.Get(url)
 	if err != nil {
 		log.Fatal(err)
 	}
