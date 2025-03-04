@@ -1,4 +1,3 @@
 # go-web-examples
 
-`go-web-examples` is a set of simple (and not so simple) web-servers written in [Go](https://golang.org).
-
+**ARCHIVED**. Please go to [go-web-examples](https://codeberg.org/sbinet/go-web-examples).

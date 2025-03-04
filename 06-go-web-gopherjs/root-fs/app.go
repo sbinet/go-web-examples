@@ -1,3 +1,4 @@
+//go:build js
 // +build js
 
 package main
@@ -6,8 +7,8 @@ import (
 	"fmt"
 	"time"
 
+	"codeberg.org/sbinet/go-web-examples/06-go-web-gopherjs/pkg"
 	"github.com/gopherjs/gopherjs/js"
-	"github.com/sbinet/go-web-examples/06-go-web-gopherjs/pkg"
 )
 
 func tickTxt(t time.Duration) string {

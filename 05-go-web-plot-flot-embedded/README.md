@@ -7,7 +7,7 @@ Data is read from a `WebSocket` and pushed to the plot.
 Run like so:
 
 ```sh
-$> go get -v github.com/sbinet/go-web-examples/05-go-web-plot-flot-embedded
+$> go get -v codeberg.org/sbinet/go-web-examples/05-go-web-plot-flot-embedded
 $> cd /anywhere && 05-go-web-plot-flot-embedded &
 $> open http://localhost:5555
 ```
